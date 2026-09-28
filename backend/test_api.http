@@ -1,0 +1,16 @@
+POST http://127.0.0.1:5000/predict
+Content-Type: application/json
+
+{
+    "transaction_id": "TEST001",
+    "amount": 2500.00,
+    "transaction_hour": 3,
+    "distance_from_home": 1500.00,
+    "distance_from_last_transaction": 1200.00,
+    "velocity": 8,
+    "device_change": 1,
+    "location_change": 1,
+    "account_age_days": 100,
+    "failed_attempts": 4,
+    "merchant_category": "online_shopping"
+}

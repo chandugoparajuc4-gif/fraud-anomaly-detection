@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Fraud Detection Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Fraud & Anomaly Detection</h1>
+            <p>AI-powered transaction monitoring</p>
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <h3>Total Transactions</h3>
+                <p id="totalTransactions">Loading...</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Suspicious Transactions</h3>
+                <p id="suspiciousTransactions">Loading...</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Normal Transactions</h3>
+                <p id="normalTransactions">Loading...</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Fraud Rate</h3>
+                <p id="fraudRate">Loading...</p>
+            </div>
+
+        </section>
+
+
+        <!-- Transaction Form and Prediction -->
+        <main>
+
+            <section class="card">
+
+                <h2>Transaction Details</h2>
+
+                <form id="transactionForm">
+
+                    <label for="amount">Amount</label>
+
+                    <input id="amount"
+                           type="number"
+                           step="0.01"
+                           min="0"
+                           placeholder="Enter amount"
+                           required>
+
+
+                    <label for="hour">
+                        Transaction Hour (0–23)
+                    </label>
+
+                    <input id="hour"
+                           type="number"
+                           min="0"
+                           max="23"
+                           placeholder="e.g. 14"
+                           required>
+
+
+                    <label for="distance">
+                        Distance from Home
+                    </label>
+
+                    <input id="distance"
+                           type="number"
+                           min="0"
+                           step="0.01"
+                           placeholder="Distance in km"
+                           required>
+
+
+                    <label for="lastDistance">
+                        Distance from Last Transaction
+                    </label>
+
+                    <input id="lastDistance"
+                           type="number"
+                           min="0"
+                           step="0.01"
+                           placeholder="Distance in km"
+                           required>
+
+
+                    <label for="velocity">
+                        Transaction Velocity
+                    </label>
+
+                    <input id="velocity"
+                           type="number"
+                           min="0"
+                           step="0.01"
+                           placeholder="Enter velocity"
+                           required>
+
+
+                    <label for="device">
+                        Device Changed
+                    </label>
+
+                    <select id="device" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+
+
+                    <label for="location">
+                        Location Changed
+                    </label>
+
+                    <select id="location" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+
+
+                    <label for="age">
+                        Account Age (days)
+                    </label>
+
+                    <input id="age"
+                           type="number"
+                           min="0"
+                           placeholder="Account age"
+                           required>
+
+
+                    <label for="failed">
+                        Failed Attempts
+                    </label>
+
+                    <input id="failed"
+                           type="number"
+                           min="0"
+                           placeholder="Number of attempts"
+                           required>
+
+
+                    <label for="category">
+                        Merchant Category
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="online_shopping">
+                            Online Shopping
+                        </option>
+
+                        <option value="restaurant">
+                            Restaurant
+                        </option>
+
+                        <option value="fuel">
+                            Fuel
+                        </option>
+
+                        <option value="jewelry">
+                            Jewelry
+                        </option>
+
+                        <option value="gift_cards">
+                            Gift Cards
+                        </option>
+
+                    </select>
+
+
+                    <button type="submit">
+                        Check Transaction
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- Prediction Result -->
+            <section class="card result-card">
+
+                <h2>Prediction Result</h2>
+
+                <div id="result" aria-live="polite">
+                    Enter transaction details and click
+                    "Check Transaction".
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- Recent Transactions -->
+        <section class="history-card">
+
+            <h2>Recent Transactions</h2>
+
+            <!-- Download CSV Button -->
+            <button id="downloadCsv" type="button">
+                Download CSV
+            </button>
+
+            <div class="table-container">
+
+                <table id="transactionTable">
+
+                    <thead>
+
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Amount</th>
+                            <th>Hour</th>
+                            <th>Result</th>
+                            <th>Anomaly Score</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="transactionHistory">
+
+                        <tr>
+                            <td colspan="5">
+                                No transactions checked yet.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Charts -->
+        <section class="charts-grid">
+
+            <div class="chart-card">
+
+                <h2>Transaction Distribution</h2>
+
+                <canvas id="transactionChart"></canvas>
+
+            </div>
+
+
+            <div class="chart-card">
+
+                <h2>Transaction Counts</h2>
+
+                <canvas id="fraudChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Your JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
