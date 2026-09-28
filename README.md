@@ -50,4 +50,4 @@ The model may produce false positives or miss suspicious transactions. Predictio
 - Deploy the application to a web server
 
 ## Conclusion
-This project demonstrates how machine learning, Flask, and web technologies can be combined to build an interactive transaction anomaly detection system.
+This project demonstrates how machine learning, Flask, and web technologies can be combined to build an interactive transaction anomaly detection system.# fraud-anomaly-detection
